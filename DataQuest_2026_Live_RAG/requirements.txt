@@ -1,0 +1,9 @@
+pathway
+sentence-transformers
+fastapi
+uvicorn
+python-dotenv
+requests
+pytest
+scikit-learn
+duckduckgo-search

@@ -1,0 +1,25 @@
+# DataQuest 2026 - Live News Dynamic RAG
+
+- [/] Project Setup
+    - [x] Create folder structure
+    - [x] Create virtual environment setup files (requirements.txt, .env.example)
+- [ ] Core Implementation
+    - [x] Implement Configuration (`app/utils/config.py`)
+    - [x] Implement Embeddings (`app/rag/embeddings.py`)
+    - [x] Implement Live Data Connector (`app/connectors/live_news.py`)
+    - [x] Implement Pathway Pipeline (`app/pipeline/stream_pipeline.py`)
+    - [x] Implement RAG Engine (`app/rag/rag_engine.py`)
+    - [x] Implement Query API (`app/api/query_api.py`)
+    - [x] Implement Entry Point (`main.py`)
+- [x] Web Interface (UI)
+    - [x] Design Premium Dashboard (`UI/index.html`, `UI/style.css`)
+    - [x] Implement Interact Logic (`UI/app.js`)
+    - [x] Add `/recents` endpoint to API for live feed
+    - [x] Serve UI from FastAPI
+- [x] Documentation & Testing
+    - [x] Create Architecture Doc (`docs/architecture.md`)
+    - [x] Create Tests (`tests/test_pipeline.py`)
+    - [x] Create README.md
+- [x] Verification
+    - [x] Walkthrough and Demo Instructions
+    - [x] Live Run Verification (System Started & Streaming)

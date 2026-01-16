@@ -1,0 +1,317 @@
+:root {
+    --bg-color: #050510;
+    --sidebar-bg: #0a0a1a;
+    --accent: #00f2ff;
+    --accent-glow: rgba(0, 242, 255, 0.4);
+    --text-primary: #ffffff;
+    --text-secondary: #8b9bb4;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --success: #00ff9d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', monospace;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    border: 5px solid var(--accent-glow);
+    /* Hackathon Vibe */
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    border: none;
+}
+
+/* Background Grid Animation */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 350px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.sidebar-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 20px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.accent {
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.status-indicator {
+    font-size: 0.8rem;
+    color: var(--success);
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: var(--success);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--success);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.feed-container h3 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.news-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-right: 5px;
+}
+
+/* Scrollbar */
+.news-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.news-list::-webkit-scrollbar-thumb {
+    background: var(--glass-border);
+    border-radius: 4px;
+}
+
+.news-item {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    border-left: 2px solid var(--accent);
+    animation: slideIn 0.3s ease-out;
+    transition: all 0.3s;
+}
+
+.news-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(5px);
+}
+
+.news-meta {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.news-topic-tag {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* Enforce full height */
+    overflow: hidden;
+    /* Prevent body scroll */
+}
+
+.top-bar {
+    flex: 0 0 auto;
+    /* Don't grow/shrink */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.query-interface {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 0;
+    /* CRITICAL for nested flex scrolling */
+    padding-bottom: 20px;
+}
+
+.box-glass {
+    background: rgba(10, 10, 26, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.chat-container {
+    flex: 1;
+    overflow-y: auto;
+    /* Enable Scroll */
+    display: flex;
+    flex-direction: column;
+    /* Removed justify-content: flex-end to prevent layout issues when scrolling */
+}
+
+.response-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: auto;
+    /* Push content to bottom when sparse */
+}
+
+.input-area {
+    flex: 0 0 auto;
+    /* Ensure input area never shrinks */
+}
+
+/* =========================================================
+   QUERY INPUT – FINAL FIX (NON-DESTRUCTIVE OVERRIDE)
+   ========================================================= */
+
+/* Ensure input area feels solid and premium */
+.input-area {
+    padding: 18px 20px;
+}
+
+/* Make form a single horizontal unit */
+#query-form {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Fix input height, vertical alignment, and feel */
+#query-input {
+    flex: 1;
+    height: 56px;                     /* KEY FIX */
+    padding: 0 20px;                  /* Vertical centering */
+    font-size: 16px;
+    line-height: 56px;                /* PERFECT vertical text centering */
+    font-family: 'Space Grotesk', monospace;
+    color: var(--text-primary);
+
+    background: rgba(5, 10, 25, 0.75);
+    border: 1px solid rgba(0, 242, 255, 0.35);
+    border-radius: 14px;
+
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+/* Placeholder polish */
+#query-input::placeholder {
+    color: rgba(180, 200, 230, 0.55);
+}
+
+/* Focus state = judge wow factor */
+#query-input:focus {
+    border-color: var(--accent);
+    box-shadow:
+        0 0 0 2px rgba(0, 242, 255, 0.15),
+        0 0 18px rgba(0, 242, 255, 0.25);
+    background: rgba(5, 10, 25, 0.9);
+}
+
+/* Fix ANALYZE button sizing */
+#submit-btn {
+    height: 56px;                     /* MATCH input */
+    padding: 0 30px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    color: #001418;
+    background: linear-gradient(135deg, #00f2ff, #4dfcff);
+    border: none;
+    border-radius: 14px;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+/* Button hover = subtle power */
+#submit-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 242, 255, 0.45);
+}
+
+/* Button press */
+#submit-btn:active {
+    transform: translateY(0);
+}

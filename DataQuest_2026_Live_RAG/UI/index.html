@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live News Dynamic RAG | DataQuest 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Neural Feed -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-text">PATHWAY <span class="accent">LIVE</span></div>
+                <div class="status-indicator">
+                    <span class="dot"></span> SYSTEM ONLINE
+                </div>
+            </div>
+            
+            <div class="feed-container">
+                <h3>NEURAL NEWS STREAM</h3>
+                <div id="news-feed" class="news-list">
+                    <!-- Dynamic Content -->
+                    <div class="loading-state">Initializing Neural Link...</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>DYNAMIC RAG INTELLIGENCE</h1>
+                <div class="hackathon-tag">DATAQUEST 2026</div>
+            </header>
+
+            <div class="query-interface">
+                <div class="chat-container box-glass">
+                    <div id="response-area" class="response-area">
+                        <div class="welcome-message">
+                            <h2>System Ready.</h2>
+                            <p>Ask a question about the live incoming data stream.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-area box-glass">
+                    <form id="query-form">
+                        <input type="text" id="query-input" placeholder="Query the live knowledge base..." autocomplete="off">
+                        <button type="submit" id="submit-btn">ANALYZE</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
