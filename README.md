@@ -74,5 +74,7 @@ This command will:
 - Connect to Twitter/X API for real real-world data.
 - Integrate a generative LLM (GPT-4 or Llama 3) to synthesize full paragraphs from the retrieved context. (Current implementation focuses on the *retrieval* accuracy and speed).
 
+https://shanmukha2006-max.github.io/dataquest-2026-live-rag/
+
 ---
 *Built with ❤️ for DataQuest 2026*
